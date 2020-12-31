@@ -1,0 +1,39 @@
+.section .data
+
+	.global op1
+	.global op2
+	
+
+.section .text 
+
+	.global sum2ints 
+	
+sum2ints:
+
+	#prologue
+	pushl %ebp			#save previous stack frame pointer
+	movl %esp, %ebp		#the stack frame pointer for sum fucntion
+	
+	
+	#clean registers
+	movl $0, %eax		#clean the register eax
+	movl $0, %edx		#clean the register edx
+	
+	#body of the function
+	
+	
+	movl op1, %ecx	#move op1 to edx register
+	movl op2, %eax	#move op2 to eda register
+	add %ecx, %eax	#add edx to eax
+	adcl $0, %edx	#add carry flag to edx
+	
+	cdq
+	
+		
+	#epilogue
+	movl %ebp, %esp		#restore the previous stack pointer ("clear" the stack)
+	popl %ebp		#restore the previous stack frame pointer
+	
+	
+	#return from the function
+	ret
